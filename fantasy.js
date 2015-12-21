@@ -1,6 +1,8 @@
 var username = "";
 var password = "";
 var league = "";
+var playerName = "Nelson Agholor";
+var playerToDropName = "Leonard Hankerson";
 
 var casper = require('casper').create({
     pageSettings: {
@@ -10,9 +12,9 @@ var casper = require('casper').create({
     }
 });
 
-//First step is to open Facebook
+//First step is to open Yahoo
 casper.start().thenOpen(league, function() {
-    console.log("Facebook website opened");
+    console.log("Yahoo Fantasy Page Opened");
     this.capture('BeforeLogin.png');
 });
 
