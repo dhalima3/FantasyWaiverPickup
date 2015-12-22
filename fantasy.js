@@ -1,8 +1,6 @@
-var username = "";
-var password = "";
 var league = "";
-var playerName = "Nelson Agholor";
-var playerToDropName = "Leonard Hankerson";
+var playerName = "";
+var playerToDropName = "";
 
 var casper = require('casper').create({
     pageSettings: {
@@ -23,8 +21,8 @@ casper.start().thenOpen(league, function() {
 casper.then(function(){
     console.log("Login using username and password");
     this.evaluate(function(){
-        document.getElementById("login-username").value= username;
-		document.getElementById("login-passwd").value= password;
+        document.getElementById("login-username").value= "";
+		document.getElementById("login-passwd").value= "";
 		document.getElementById("login-signin").click();
     });
 });
