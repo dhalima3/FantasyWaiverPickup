@@ -40,8 +40,29 @@ steps = [
 
     function() {
         console.log("Step 4 - Select Player to drop");
-        page.render('after.png');
+        page.evaluate(function() {
+            var playerToDropId = 24866;
+            var buttons = document.getElementsByTagName('button');
+            for (var i = 0; i < buttons.length; i++) {
+                 var button = buttons[i];
+                 var val = button.getAttribute('data-check-box-value');
+                 if (val == playerToDropId) {
+                    button.click();
+                 }
+            }
+        });
         //document.getElementsByClassName("login")[0].click();
+    },
+
+    function() {
+        console.log("Step 5 - Confirm");
+        var fs = require('fs');
+        var result = page.evaluate(function() {
+            return document.querySelectorAll("html")[0].outerHTML;
+        });
+        fs.write('Yahoo.html', result, 'w');
+
+        page.render('after.png');
     },
 ];
 
